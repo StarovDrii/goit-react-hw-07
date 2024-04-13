@@ -10,7 +10,7 @@ import css from './ContactForm.module.css'
 export default function ContactForm() {
   const uniqueId = useId()
   const dispatch = useDispatch()
-  const contacts = useSelector(selectItems);
+  const contacts = useSelector(selectItems)
 
   function handleAddContact(values, actions) {
     dispatch(addContact({ ...values }))

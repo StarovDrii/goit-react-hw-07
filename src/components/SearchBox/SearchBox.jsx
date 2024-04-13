@@ -19,9 +19,7 @@ export default function SearchBar() {
         id="searchbar"
         type="text"
         value={filter}
-        onChange={(e) =>
-          dispatch(changeFilter(e.target.value))
-        }
+        onChange={(e) => dispatch(changeFilter(e.target.value))}
       />
     </div>
   )

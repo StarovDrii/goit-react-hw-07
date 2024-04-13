@@ -1,7 +1,4 @@
-import {
-  createSlice,
-  createSelector,
-} from '@reduxjs/toolkit'
+import { createSlice, createSelector } from '@reduxjs/toolkit'
 import {
   fetchContacts,
   addContact,
@@ -67,7 +64,6 @@ export const selectError = (state) => state.contacts.error
 export const selectFilteredContacts = createSelector(
   [selectItems, selectNameFilter],
   (contacts, filter) => {
-    console.log('selectFilteredContacts');
     if (!filter) return contacts
     return contacts.filter((contact) =>
       contact.name

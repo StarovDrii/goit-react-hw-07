@@ -9,8 +9,7 @@ export default function ErrorMasege() {
     <div className={css.box}>
       <img src={img} alt="Error" className={css.img} />
       <p>
-        Whoops, something went wrong! Please, try reloading
-        this page!
+        Whoops, something went wrong! Please, try reloading this page!
       </p>
       <button onClick={refreshPage}>Reload</button>
     </div>
