@@ -1,17 +1,25 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik'
-import { useId } from 'react'
-import { nanoid } from 'nanoid'
 import validationSchema from '../../tools/validationSchema'
-import { useDispatch } from 'react-redux'
-import { addContact } from '../../redux/contactsSlice'
+import { useId } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { addContact } from '../../redux/contactsOps'
+import { selectItems } from '../../redux/contactsSlice'
+import { toast } from 'react-hot-toast'
 import css from './ContactForm.module.css'
 
 export default function ContactForm() {
   const uniqueId = useId()
   const dispatch = useDispatch()
+  const contacts = useSelector(selectItems);
 
   function handleAddContact(values, actions) {
-    dispatch(addContact({ ...values, id: nanoid() }))
+    dispatch(addContact({ ...values }))
+      .unwrap()
+      .then((value) => {
+        toast.success(`Added ${value.name}`, {
+          position: 'top-right',
+        })
+      })
     actions.resetForm()
   }
   return (
@@ -21,7 +29,7 @@ export default function ContactForm() {
         name: '',
         number: '',
       }}
-      validationSchema={validationSchema}
+      validationSchema={validationSchema(contacts)}
       onSubmit={handleAddContact}
     >
       <Form className={css.form}>

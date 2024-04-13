@@ -3,8 +3,8 @@ import {
   changeFilter,
   selectNameFilter,
 } from '../../redux/filtersSlice'
-
 import css from './SearchBox.module.css'
+
 export default function SearchBar() {
   const dispatch = useDispatch()
 
